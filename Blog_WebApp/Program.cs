@@ -14,12 +14,23 @@ namespace Blog_WebApp
 
             #endregion
 
+            #region Request Cors
+
+            builder.Services.AddCors(options => options.AddPolicy("_guvenliSiteler", builder =>
+            {
+                builder.WithOrigins("*").AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+            }));
+
+            #endregion
+
             #region Session
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession(i =>
             {
                 i.IdleTimeout = TimeSpan.FromHours(6);
+                i.Cookie.HttpOnly = true;
+                i.Cookie.IsEssential = true;
                 i.Cookie.Name = "WebApp";
             });
 
@@ -40,6 +51,12 @@ namespace Blog_WebApp
             #endregion
 
             var app = builder.Build();
+
+            #region Request UseCors
+
+            app.UseCors("_guvenliSiteler");
+
+            #endregion
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

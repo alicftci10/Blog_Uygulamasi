@@ -22,7 +22,7 @@ namespace Blog_WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LoginEkrani(KullaniciDataModel model)
+        public async Task<JsonResult> LoginEkrani([FromBody] KullaniciDataModel model)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -42,15 +42,10 @@ namespace Blog_WebApp.Controllers
                     if (model != null && model.Id > 0)
                     {
                         HttpContext.Session.SetString("Kullanici", text.Result);
-                        return RedirectToAction("Index", "Home");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Sifre", "Kullanıcı Adı veya Şifre yanlış!! Lütfen tekrar deneyiniz.");
                     }
                 }
 
-                return View(model);
+                return Json(model);
             }
         }
     }
