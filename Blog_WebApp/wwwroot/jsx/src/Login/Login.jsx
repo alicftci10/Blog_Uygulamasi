@@ -1,12 +1,15 @@
 ﻿import { useForm } from "react-hook-form";
 import axios from "axios";
+import '../css/Login.css'
 
 function Login() {
     const {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm();
+    } = useForm({
+        mode: "onChange"
+    });
 
     const loginUser = async (data) => {
         try {
@@ -22,38 +25,30 @@ function Login() {
     };
 
     return (
-        <div className="frm">
-            <form onSubmit={handleSubmit(loginUser)}>
-                <div className="frmKullaniciAdi">
-                    <label className="frmLabel">KULLANICI ADI</label>
-                    <input className="frm-input"
-                        {...register("KullaniciAdi", {
-                            required: "Kullanıcı Adı zorunludur.",
-                            minLength: { value: 2, message: "Minimum 2 karakter giriniz." }
-                        })}
-                        type="text"
-                    />
-                    {errors.KullaniciAdi && <span>{errors.KullaniciAdi.message}</span>}
-                </div>
-
-                <div className="frmSifre">
-                    <label className="frmLabel">ŞİFRE</label>
-                    <input className="frm-input"
-                        {...register("Sifre", {
+        <div>
+            <div className="signup">
+                <div className="signup-classic">
+                    <h2>ABlog</h2>
+                    <form onSubmit={handleSubmit(loginUser)} className="form">
+                        <fieldset className="username">
+                            <input type="text" placeholder="Kullanıcı Adı" {...register("KullaniciAdi", {
+                            required: "Kullanıcı Adı zorunludur."
+                        })} />
+                         {errors.KullaniciAdi && <span>{errors.KullaniciAdi.message}</span>}
+                        </fieldset>
+                        <fieldset className="password">
+                            <input type="password" placeholder="Şifre"  {...register("Sifre", {
                             required: "Şifre zorunludur.",
-                            minLength: { value: 2, message: "Minimum 2 karakter giriniz." }
-                        })}
-                        type="password"
-                    />
-                    {errors.Sifre && <span>{errors.Sifre.message}</span>}
+                            minLength: { value: 5, message: "Minimum 5 karakter giriniz." }
+                            })} />
+                        {errors.Sifre && <span>{errors.Sifre.message}</span>}
+                        </fieldset>
+                        <button type="submit" className="btn">GİRİŞ</button>
+                    </form>
                 </div>
-
-                <div>
-                    <button type="submit" className="frmButton">Giriş</button>
-                </div>
-
-            </form>
+            </div>
         </div>
+       
     );
 }
 

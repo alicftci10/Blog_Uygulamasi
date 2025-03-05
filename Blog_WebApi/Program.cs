@@ -118,13 +118,13 @@ namespace Blog_WebApi
                 app.MapOpenApi();
             }
 
-            app.UseHttpsRedirection();
-
             #region Session kullanýlmasý
 
             app.UseSession();
 
             #endregion
+
+            app.UseHttpsRedirection();
 
             #region JWT Konfigürasyonu
 

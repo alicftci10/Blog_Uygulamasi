@@ -29,9 +29,6 @@ namespace Blog_WebApp
             builder.Services.AddSession(i =>
             {
                 i.IdleTimeout = TimeSpan.FromHours(6);
-                i.Cookie.HttpOnly = true;
-                i.Cookie.IsEssential = true;
-                i.Cookie.Name = "WebApp";
             });
 
             #endregion
@@ -66,14 +63,14 @@ namespace Blog_WebApp
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseRouting();
-
             #region Session kullanýlmasý
 
             app.UseSession();
 
             #endregion
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
 
             app.UseAuthorization();
 

@@ -1,4 +1,4 @@
-body {
+/*body {
     padding: 0;
     margin: 0;
     background-color: white;
@@ -6,45 +6,5 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.frm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 900px;
-    height: 200px;
-    border: 1px solid red;
-    background-color: black;
-    text-align: center;
-}
-
-.frmKullaniciAdi{
-   height:50px;
-   text-align:start;
-}
-
-.frmSifre {
-    height: 50px;
-    text-align: start;
-}
-
-.frmLabel {
-    width: 150px;
-    display: inline-block;
-}
-
-.frmButton {
-    width: 80px;
-    height: 40px;
-    background-color: green;
-    color: white;
-    border-radius: 5px;
-    margin-top: 15px;
-    cursor: pointer;
-}
-
-.frm-input{
-    margin-right:10px;
-}
+    min-height:100vh;
+}*/
