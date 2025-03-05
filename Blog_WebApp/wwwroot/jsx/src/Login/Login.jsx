@@ -14,7 +14,7 @@ function Login() {
     const loginUser = async (data) => {
         try {
             const response = await axios.post('https://localhost:7012/Login/LoginEkrani', data);
-            if (response.data.jwtToken != null) {
+            if (response.data.jwtToken) {
                 localStorage.setItem("webappjwttoken", response.data.jwtToken);
                 window.location.href = 'https://localhost:7012/Home/Index'
             }
@@ -48,7 +48,6 @@ function Login() {
                 </div>
             </div>
         </div>
-       
     );
 }
 
