@@ -6,6 +6,7 @@ function Login() {
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors }
     } = useForm({
         mode: "onChange"
@@ -14,11 +15,13 @@ function Login() {
     const loginUser = async (data) => {
         try {
             const response = await axios.post('https://localhost:7012/Login/LoginEkrani', data);
-            if (response.data.jwtToken) {
+            if (response.data && response.data.id > 0) {
                 localStorage.setItem("webappjwttoken", response.data.jwtToken);
                 window.location.href = 'https://localhost:7012/Home/Index'
             }
-           
+            else if (response.data && response.data.id == 0) {
+                setError("Sifre", { type: "manual", message: "Kullanıcı Adı veya Şifre yanlış!! Lütfen tekrar deneyiniz." });
+            }
         } catch (error) {
             console.error("Giriş başarısız", error);
         }
@@ -32,16 +35,16 @@ function Login() {
                     <form onSubmit={handleSubmit(loginUser)} className="form">
                         <fieldset className="username">
                             <input type="text" placeholder="Kullanıcı Adı" {...register("KullaniciAdi", {
-                            required: "Kullanıcı Adı zorunludur."
-                        })} />
-                         {errors.KullaniciAdi && <span>{errors.KullaniciAdi.message}</span>}
+                                required: "Kullanıcı Adı zorunludur."
+                            })} />
+                            {errors.KullaniciAdi && <span>{errors.KullaniciAdi.message}</span>}
                         </fieldset>
                         <fieldset className="password">
                             <input type="password" placeholder="Şifre"  {...register("Sifre", {
-                            required: "Şifre zorunludur.",
-                            minLength: { value: 5, message: "Minimum 5 karakter giriniz." }
+                                required: "Şifre zorunludur.",
+                                minLength: { value: 5, message: "Minimum 5 karakter giriniz." }
                             })} />
-                        {errors.Sifre && <span>{errors.Sifre.message}</span>}
+                            {errors.Sifre && <span>{errors.Sifre.message}</span>}
                         </fieldset>
                         <button type="submit" className="btn">GİRİŞ</button>
                     </form>

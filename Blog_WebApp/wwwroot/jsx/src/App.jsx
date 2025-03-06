@@ -1,16 +1,12 @@
-/*import { useState } from 'react'*/
 import './App.css'
-import Login from './Login/Login'
+import Login from './Pages/Login'
 
 function App() {
-
-
     return (
         <div>
-            <Login></Login>
-      </div>
-     
-  )
+            <Login/>
+        </div>
+    )
 }
 
 export default App
