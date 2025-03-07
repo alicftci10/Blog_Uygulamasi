@@ -64,22 +64,6 @@ namespace Blog_WebApi
 
             #endregion
 
-            #region Session
-
-            builder.Services.AddDistributedMemoryCache();
-            builder.Services.AddSession(i =>
-            {
-                i.IdleTimeout = TimeSpan.FromHours(6);
-            });
-
-            #endregion
-
-            #region MemoryCache
-
-            builder.Services.AddMemoryCache();
-
-            #endregion
-
             #region IOS
 
             builder.Services.AddDbContext<BlogDbContext>(options =>
@@ -97,9 +81,7 @@ namespace Blog_WebApi
 
             #region ConnectionString ve Config bilgileri
 
-            string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            ConfigurationInfo.ConnectionString = connectionString;
-
+            ConfigurationInfo.ConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             ConfigurationInfo.ResimFolderUrl = builder.Configuration["ResimFolderUrl"];
 
             #endregion
@@ -117,12 +99,6 @@ namespace Blog_WebApi
             {
                 app.MapOpenApi();
             }
-
-            #region Session kullanýlmasý
-
-            app.UseSession();
-
-            #endregion
 
             app.UseHttpsRedirection();
 
