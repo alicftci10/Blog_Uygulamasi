@@ -1,7 +1,6 @@
 ﻿using Blog_Business.Interfaces;
 using Blog_Entities.DataModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog_WebApi.Controllers

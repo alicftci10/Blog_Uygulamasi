@@ -27,11 +27,9 @@ function Login() {
     const userLogin = async (data) => {
         try {
             const response = await dispatch(getUser(data)).unwrap();
-
             if (response && response.id > 0) {
-              
                 localStorage.setItem("webappjwttoken", response.jwtToken);
-                navigate("/home")
+                navigate("/")
             }
             else {
                 setError("Sifre", {
@@ -49,27 +47,25 @@ function Login() {
     };
 
     return (
-        <div>
-            <div className="signup">
-                <div className="signup-classic">
-                    <h2>ABlog</h2>
-                    <form onSubmit={handleSubmit(userLogin)} className="form">
-                        <fieldset className="username">
-                            <input type="text" placeholder="Kullanıcı Adı" {...register("KullaniciAdi", {
-                                required: "Kullanıcı Adı zorunludur."
-                            })} />
-                            {errors.KullaniciAdi && <span className="errorMessage">{errors.KullaniciAdi.message}</span>}
-                        </fieldset>
-                        <fieldset className="password">
-                            <input type="password" placeholder="Şifre"  {...register("Sifre", {
-                                required: "Şifre zorunludur.",
-                                minLength: { value: 5, message: "Minimum 5 karakter giriniz." }
-                            })} />
-                            {errors.Sifre && <span className="errorMessage">{errors.Sifre.message}</span>}
-                        </fieldset>
-                        <button type="submit" className="btn">GİRİŞ</button>
-                    </form>
-                </div>
+        <div className="signup">
+            <div className="signup-classic">
+                <h2>ABlog</h2>
+                <form onSubmit={handleSubmit(userLogin)} className="form">
+                    <fieldset className="username">
+                        <input type="text" placeholder="Kullanıcı Adı" {...register("KullaniciAdi", {
+                            required: "Kullanıcı Adı zorunludur."
+                        })} />
+                        {errors.KullaniciAdi && <span className="errorMessage">{errors.KullaniciAdi.message}</span>}
+                    </fieldset>
+                    <fieldset className="password">
+                        <input type="password" placeholder="Şifre"  {...register("Sifre", {
+                            required: "Şifre zorunludur.",
+                            minLength: { value: 5, message: "Minimum 5 karakter giriniz." }
+                        })} />
+                        {errors.Sifre && <span className="errorMessage">{errors.Sifre.message}</span>}
+                    </fieldset>
+                    <button type="submit" className="btn">GİRİŞ</button>
+                </form>
             </div>
         </div>
     );

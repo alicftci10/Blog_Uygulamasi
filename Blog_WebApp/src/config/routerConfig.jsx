@@ -6,8 +6,8 @@ import Login from '../pages/Login'
 function RouterConfig() {
     return (
         <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
         </Routes>
     )
 }

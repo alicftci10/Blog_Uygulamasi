@@ -10,7 +10,7 @@ const api_url = "https://localhost:7188/api"
 
 export const getUser = createAsyncThunk("getUser", async (model) => {
     const response = await axios.post(`${api_url}/LoginApi/Giris`, model);
-    return response.data
+    return response.data;
 })
 
 export const loginSlice = createSlice({
