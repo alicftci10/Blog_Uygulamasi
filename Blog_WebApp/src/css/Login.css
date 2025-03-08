@@ -4,14 +4,11 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+body.login-page {
+    background-color: #f4fde7;
     font-family: Arial;
 }
 
-body {
-    background: #f4fde7;
-}
 
 /*--------------------
 Buttons
@@ -181,7 +178,7 @@ Signup
     color: inherit;
 }
 
-span {
+.errorMessage {
     position: absolute;
     bottom: -25px; /* Input'un hemen altına sabitler */
     left: 0;

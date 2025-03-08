@@ -1,11 +1,16 @@
 import './App.css'
-import Login from './pages/Login'
+import Loading from './components/loading'
+import PageContainer from './container/pageContainer'
+import RouterConfig from './config/routerConfig'
 
 function App() {
 
-  return (
-     <Login/>
-  )
+    return (
+        <PageContainer>
+            <Loading />
+            <RouterConfig />
+        </PageContainer>
+    )
 }
 
 export default App
