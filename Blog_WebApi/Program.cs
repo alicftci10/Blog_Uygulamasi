@@ -1,4 +1,3 @@
-
 using Blog_Business.Interfaces;
 using Blog_Business.Managers;
 using Blog_DataAccess.DBContext;
@@ -8,7 +7,6 @@ using Blog_DataAccess.GenericRepository.Interfaces;
 using Blog_DataAccess.GenericRepository.Repository;
 using Blog_Entities.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;

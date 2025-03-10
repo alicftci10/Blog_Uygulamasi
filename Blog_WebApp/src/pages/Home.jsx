@@ -1,5 +1,4 @@
 import { useCallback, useEffect } from "react";
-import '../css/Home.css'
 import { useNavigate } from "react-router-dom"
 
 function Home() {
@@ -17,15 +16,9 @@ function Home() {
         setUserActive();
     }, [setUserActive]);
 
-    useEffect(() => {
-        document.body.className = "home-page";
-        return () => { document.body.className = ""; }
-    }, []);
-
     return (
-        <div className="container">
-            sa
-        </div>
+        <>
+        </>
     )
 }
 
