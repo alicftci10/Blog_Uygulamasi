@@ -6,13 +6,5 @@ export default defineConfig({
     plugins: [plugin()],
     server: {
         port: 52155,
-    },
-    build: {
-        rollupOptions: {
-            input: {
-                main: "index.html",
-                login: "login.html",
-            },
-        },
     }
 })
