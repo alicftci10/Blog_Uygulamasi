@@ -1,9 +1,9 @@
 ﻿import { useForm } from "react-hook-form";
-import '../css/Login.css'
-import { useDispatch } from 'react-redux'
+import '../css/Login.css';
 import { useEffect } from "react";
-import { getUser } from "../redux/slices/loginSlice";
-import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import { loginUser } from "../redux/slices/loginSlice";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -26,9 +26,8 @@ function Login() {
 
     const userLogin = async (data) => {
         try {
-            const response = await dispatch(getUser(data)).unwrap();
+            const response = await dispatch(loginUser(data)).unwrap();
             if (response && response.id > 0) {
-                localStorage.setItem("webappjwttoken", response.jwtToken);
                 navigate("/")
             }
             else {
