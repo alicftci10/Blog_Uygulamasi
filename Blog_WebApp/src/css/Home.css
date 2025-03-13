@@ -1,0 +1,31 @@
+.dropdown-menu {
+    position: absolute;
+    top: 40px;
+    /* İkonun altına hizalamak için */
+    right: 0;
+    background-color: #333;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    z-index: 1000;
+    /* Menünün üstte görünmesini sağlamak için */
+    display: none;
+    /* Başlangıçta gizle */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.dropdown-menu.show {
+    display: block;
+    /* state ile 'show' sınıfı eklenince göster */
+}
+
+
+.dropdown-item {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #555;
+}

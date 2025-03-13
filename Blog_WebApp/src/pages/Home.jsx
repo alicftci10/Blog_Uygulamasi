@@ -1,16 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { initializeScrollSpy, initializeTyped, checkUserData } from "../js/homeUtils";
+import { FaCircleUser } from "react-icons/fa6";
+import '../css/Home.css'
+import { logoutUser } from "../redux/slices/loginSlice";
+import { useDispatch } from 'react-redux';
 
 function Home() {
 
+    const data = JSON.parse(localStorage.getItem("user_data"));
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(logoutUser());
+        checkUserData(navigate)
+    };
 
     useEffect(() => {
-        const data = JSON.parse(localStorage.getItem("user_data"));
-        if (!data) {
-            navigate("/login");
-        }
+        checkUserData(navigate);
     }, [navigate]);
+
+    useEffect(() => {
+        initializeTyped();
+    }, []);
+
+    useEffect(() => {
+        initializeScrollSpy();
+    }, []);
 
     return (
         <>
@@ -27,10 +51,10 @@ function Home() {
                     <div className="navbar-collapse collapse justify-content-end" id="navbarDefault">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link js-scroll active" href="#home">Home</a>
+                                <a className="nav-link js-scroll active" href="#home">Ana Sayfa</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link js-scroll" href="#about">About</a>
+                                <a className="nav-link js-scroll" href="#about">Hakkımda</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link js-scroll" href="#service">Services</a>
@@ -44,10 +68,29 @@ function Home() {
                             <li className="nav-item">
                                 <a className="nav-link js-scroll" href="#contact">Contact</a>
                             </li>
+                            <li className="nav-item">
+                                <FaCircleUser
+                                    style={{
+                                        cursor: "pointer",
+                                        color: "white",
+                                        position: 'relative',
+                                        top: '5px',
+                                        fontSize: '25px',
+                                        marginLeft: '10px'
+                                    }}
+                                    onClick={toggleDropdown}
+                                />
+                                {isOpen && (
+                                    <div className="dropdown-menu show">
+                                        <span className="dropdown-item" style={{ borderRadius: '10px 10px 0 0', backgroundColor: 'inherit' }}>{data.ad + " " + data.soyad}</span>
+                                        <a className="dropdown-item" style={{ borderRadius: '0 0 10px 10px' }} href="#" onClick={handleLogout}>Çıkış</a>
+                                    </div>
+                                )}
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav >
             {/*/ Nav End */}
 
             {/*/ Intro Skew Star /*/}
@@ -57,8 +100,8 @@ function Home() {
                     <div className="table-cell">
                         <div className="container">
                             {/*<p className="display-6 color-d">Hello, world!</p>*/}
-                            <h1 className="intro-title mb-4">Ali �ift�i</h1>
-                            <p className="intro-subtitle"><span className="text-slider-items">CEO DevFolio,Web Developer,Web Designer,Frontend Developer,Graphic Designer</span><strong className="text-slider"></strong></p>
+                            <h1 className="intro-title mb-4">Ali Çiftçi</h1>
+                            <p className="intro-subtitle"><span className="text-slider-items"></span><strong className="text-slider"></strong></p>
                             {/* <p className="pt-3"><a className="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> */}
                         </div>
                     </div>
@@ -736,7 +779,7 @@ function Home() {
             </section>
             {/*/ Section Contact-footer End /*/}
 
-            <a href="#" className="back-to-top"><i className="fa fa-chevron-up"></i></a>
+            <a href="#page-top" className="back-to-top js-scroll"><i className="fa fa-chevron-up"></i></a>
         </>
     )
 }

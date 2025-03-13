@@ -10,8 +10,11 @@ export const loginUser = createAsyncThunk("login/loginUser", async (userData) =>
     if (data && data.jwtToken) {
         localStorage.setItem("user_data", JSON.stringify(data));
     }
-
     return data;
+});
+
+export const logoutUser = createAsyncThunk("login/logoutUser", async () => {
+    return localStorage.removeItem("user_data");
 });
 
 export const loginSlice = createSlice({
@@ -21,22 +24,22 @@ export const loginSlice = createSlice({
         user: null
     },
     reducers: {
-        logout: (state) => {
-            state.user = null;
-            state.token = null;
-            localStorage.removeItem("user_data");
-        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(loginUser.pending, (state) => {
                 state.loading = true;
-                state.error = null;
             })
             .addCase(loginUser.fulfilled, (state, action) => {
                 state.loading = false;
                 state.user = action.payload;
-                state.token = action.payload.jwtToken;
+            })
+            .addCase(logoutUser.pending, (state) => {
+                state.loading = true;
+            })
+            .addCase(logoutUser.fulfilled, (state) => {
+                state.loading = false;
+                state.user = null;
             })
     }
 })
