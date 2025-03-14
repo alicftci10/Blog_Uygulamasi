@@ -5,8 +5,6 @@ VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog_DataAccess", "Blog_DataAccess\Blog_DataAccess.csproj", "{61AB4ACA-DC90-4C5F-9B8F-78C119CC83C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog_Core", "Blog_Core\Blog_Core.csproj", "{AB220357-F13B-48F4-BF6A-8DE8741022F2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog_Business", "Blog_Business\Blog_Business.csproj", "{B6D34F00-8C4C-4754-965B-F5EB2F628E58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blog_Entities", "Blog_Entities\Blog_Entities.csproj", "{85CE02D0-E266-46A9-8B15-48C3B2E45D29}"
@@ -25,10 +23,6 @@ Global
 		{61AB4ACA-DC90-4C5F-9B8F-78C119CC83C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61AB4ACA-DC90-4C5F-9B8F-78C119CC83C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61AB4ACA-DC90-4C5F-9B8F-78C119CC83C2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB220357-F13B-48F4-BF6A-8DE8741022F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB220357-F13B-48F4-BF6A-8DE8741022F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB220357-F13B-48F4-BF6A-8DE8741022F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB220357-F13B-48F4-BF6A-8DE8741022F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6D34F00-8C4C-4754-965B-F5EB2F628E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B6D34F00-8C4C-4754-965B-F5EB2F628E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6D34F00-8C4C-4754-965B-F5EB2F628E58}.Release|Any CPU.ActiveCfg = Release|Any CPU

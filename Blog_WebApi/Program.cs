@@ -26,7 +26,7 @@ namespace Blog_WebApi
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            #region Ajax request
+            #region AddCors request
 
             builder.Services.AddCors(options => options.AddPolicy("_guvenliSiteler", builder =>
             {
@@ -86,7 +86,7 @@ namespace Blog_WebApi
 
             var app = builder.Build();
 
-            #region Ajax Cors
+            #region UseCors
 
             app.UseCors("_guvenliSiteler");
 
